@@ -1,3 +1,9 @@
+/* Lopez Dario Leg 26413
+ https://labsys.frc.utn.edu.ar/gitlab/lopez26413
+ RiverPlate2023
+ github 26413@sistemas.frc.utn.edu.ar
+ D4r10l0p3z2025
+ */
 package org.example;
 
 
@@ -31,12 +37,12 @@ public class Main {
         LiquidacionRepository lr = new LiquidacionRepository(em);
 
         List<Tarjeta> tarjetas = tr.findAll();
-        System.out.println("Tarjetas en BD:");
+        System.out.println("Tarjetas registradas  en nuestras  Base de Datos:");
         tarjetas.forEach(t -> System.out.println(t.getNumero() +  " - " + t.getTitular()));
 
-        System.out.println("\nConsumos tarjeta id=1 mes=3 anio=2026:");
+        System.out.println("\nLos consumos de las tarjetas  en el mes=3    anio=2026:");
         List<Consumo> consumos = cr.consumosPorTarjetaMesAnio(1L, 3, 2026);
-        consumos.forEach(c -> System.out.println(c.getId() + " " + c.getMonto() + " " + c.getMoneda() + " rubro:" + c.getRubro()));
+        consumos.forEach(c -> System.out.println(c.getId() + " " + c.getMonto() + "  $ " + c.getMoneda() + " rubro:" + c.getRubro()));
 
         /* consumos.forEach(c2 -> {
             if (c2.getMonto() == 0) {
