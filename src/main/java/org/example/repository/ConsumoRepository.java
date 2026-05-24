@@ -1,7 +1,6 @@
 package org.example.repository;
 
-import org.example.entity.Consumo;
-import org.example.entity.Tarjeta;
+import org.example.model.Consumo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 

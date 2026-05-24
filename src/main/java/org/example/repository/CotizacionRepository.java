@@ -1,6 +1,6 @@
 package org.example.repository;
 
-import org.example.entity.Cotizacion;
+import org.example.model.Cotizacion;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
@@ -16,7 +16,7 @@ public class CotizacionRepository {
 
     public void save(Cotizacion c){
         em.getTransaction().begin();
-        if (c.getId() == null) em.persist(c); else em.merge(c);
+        if (c.getMoneda() == null) em.persist(c); else em.merge(c);
         em.getTransaction().commit();
     }
 

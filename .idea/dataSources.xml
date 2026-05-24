@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="tarjetas" uuid="289228a3-d9be-4d1b-8ce5-ba05dbc53e6b">
+    <data-source source="LOCAL" name="tarjetas@localhost" uuid="27822379-d068-4938-80ec-c700108e52ba">
       <driver-ref>h2.unified</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.h2.Driver</jdbc-driver>
-      <jdbc-url>jdbc:h2:mem:tarjetas</jdbc-url>
+      <jdbc-url>jdbc:h2:C:\Users\dario\IdeaProjects\ParcialLopezDario26413\src\main\resources\schema.sql</jdbc-url>
+      <jdbc-additional-properties>
+        <property name="com.intellij.clouds.kubernetes.db.host.port" />
+        <property name="com.intellij.clouds.kubernetes.db.enabled" value="false" />
+        <property name="com.intellij.clouds.kubernetes.db.container.port" />
+      </jdbc-additional-properties>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

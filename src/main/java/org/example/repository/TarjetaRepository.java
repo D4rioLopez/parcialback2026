@@ -1,6 +1,6 @@
 package org.example.repository;
 
-import org.example.entity.Tarjeta;
+import org.example.model.Tarjeta;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 

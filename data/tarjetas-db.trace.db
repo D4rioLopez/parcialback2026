@@ -442,3 +442,13 @@ alter table if exists COTIZACIONES add constraint UKf00ud1ae1fb8okfi2g4s45xi uni
 	at jakarta.persistence.Persistence.createEntityManagerFactory(Persistence.java:80)
 	at org.example.util.EntityManagerUtil.init(EntityManagerUtil.java:16)
 	at org.example.Main.main(Main.java:31)
+2026-05-27 00:47:28 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "COTIZACIONES" ya existe
+Table "COTIZACIONES" already exists; SQL statement:
+CREATE TABLE COTIZACIONES (MONEDA VARCHAR(10) PRIMARY KEY,
+                           TASA_CAMBIO FLOAT NOT NULL) [42101-220]
+2026-05-27 01:18:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "COTIZACIONES" ya existe
+Table "COTIZACIONES" already exists; SQL statement:
+CREATE TABLE COTIZACIONES (MONEDA VARCHAR(10) PRIMARY KEY,
+                           TASA_CAMBIO FLOAT NOT NULL) [42101-220]

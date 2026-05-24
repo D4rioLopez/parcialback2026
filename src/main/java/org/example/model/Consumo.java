@@ -1,9 +1,7 @@
-package org.example.entity;
+package org.example.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.math.BigDecimal;
 
 @Entity
 @Table(name = "CONSUMOS")
@@ -13,15 +11,8 @@ public class Consumo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "ID_TARJETA",nullable = false)
-    private Tarjeta tarjeta;
-
-    @Column(name = "MONEDA", length = 10, nullable = false) // asegurar nombre exacto
-    private String moneda;
-
-    @Column(name = "MONTO", precision = 20, scale = 2, nullable = false)
-    private BigDecimal monto;
+    @Column(name = "MONTO", nullable = false)
+    private Double monto;
 
     @Column(name = "DIA", nullable = false)
     private Integer dia;
@@ -32,8 +23,14 @@ public class Consumo {
     @Column(name = "ANIO", nullable = false)
     private Integer anio;
 
-    @Column(name = "RUBRO")
+    @Column(name = "RUBRO", length = 20, nullable = false)
     private String rubro;
 
-}
+    @Column(name = "MONEDA", length = 3, nullable = false) // asegurar nombre exacto
+    private String moneda;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ID_TARJETA", nullable = false)
+    private Tarjeta tarjeta;
+
+}

@@ -1,38 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="https://jakarta.ee/xml/ns/persistence" version="3.0">
     <persistence-unit name="tarjetasPU" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>org.example.entity.Tarjeta</class>
-        <class>org.example.entity.Consumo</class>
-        <class>org.example.entity.Moneda</class>
-        <class>org.example.entity.Cotizacion</class>
-        <class>org.example.entity.Liquidacion</class>
+
+        <!-- Lista de entidades -->
+        <class>org.example.model.Cotizacion</class>
+        <class>org.example.model.Tarjeta</class>
+        <class>org.example.model.Consumo</class>
+        <class>org.example.model.Liquidacion</class>
+
         <properties>
-            <!-- JDBC (H2 en memoria) -->
+            <!-- JDBC -->
             <property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver"/>
-            <property name="jakarta.persistence.jdbc.url"
-                      value="jdbc:h2:mem:tarjetas;DB_CLOSE_DELAY=-1"/>
+            <!--property name="jakarta.persistence.jdbc.url" value="jdbc:h2:mem:tarjetas;DB_CLOSE_DELAY=-1"/>
+
+            <!- para que persistan las tablas y sean guardadas en un archivo para consultas luego -->
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:h2:file:./data/tarjetas;DB_CLOSE_DELAY=-1"/>
+
+
             <property name="jakarta.persistence.jdbc.user" value="sa"/>
             <property name="jakarta.persistence.jdbc.password" value=""/>
-            <!-- Dialecto específico -->
-            <!--property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/-->
-            <!-- DDL: para práctica inicial -->
-            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
-            <!-- Log -->
-            <!--property name="hibernate.show_sql" value="true"/>
-            <property name="hibernate.format_sql" value="true"/-->
 
-            <!-- Para no mostrar los Log en consola-->
-            <property name="jakarta.persistence.schema generation.database.action" value="drop-and-create"/>
-            <property name="jakarta.persistence.schema-generation.create source" value="script"/>
-            <property name="jakarta.persistence.schema-generation.create script-source" value="schema.sql"/>
-            <property name="jakarta.persistence.sql-load-script-source" value="data.sql"/>
+            <!-- MUY IMPORTANTE: Forzar el dialecto en Hibernate 6 -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+
+            <!-- Gestión de Esquema: Solo 'update' o 'create'. Elimina las de script. -->
+            <!--property name="hibernate.hbm2ddl.auto" value="create-drop"/  -->
+            <!-- crea las tablas sino existen , o las actualiza si estan  -->
+            <!--property name="hibernate.hbm2ddl.auto" value="update"/-->
+            <property name="hibernate.hbm2ddl.auto" value="none"/>
 
 
+            <!-- Logs (para depuración si falla de nuevo) -->
             <property name="hibernate.show_sql" value="false"/>
-            <property name="hibernate.format_sql" value="false"/>
-            <property name="hibernate.hbm2ddl.auto" value="update"/>
-            <property name="logging.level.org.hibernate" value="ERROR"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.highlight_sql" value="true"/>
 
+            <!-- Elimina cualquier propiedad que empiece con 'jakarta.persistence.schema-generation' -->
+            <!-- Elimina 'logging.level' ya que es propiedad de Logback/SLF4J, no de Hibernate Persistence -->
         </properties>
     </persistence-unit>
 </persistence>

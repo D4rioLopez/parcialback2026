@@ -1,8 +1,7 @@
-package org.example.entity;
+package org.example.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import java.math.BigDecimal;
 
 @Entity
 @Table(name = "LIQUIDACIONES")
@@ -10,12 +9,10 @@ import java.math.BigDecimal;
 public class Liquidacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID_LIQUIDACION")
     private Long id;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "ID_TARJETA", nullable = false)
-    private Tarjeta tarjeta;
+/*    @Column(name = "ID_TARJETA", nullable = false)
+    private Long idTarjeta; */
 
     @Column(name = "MES", nullable = false)
     private Integer mes;
@@ -24,17 +21,19 @@ public class Liquidacion {
     private Integer anio;
 
     @Column(name = "TOTAL_A_PAGAR",nullable = false)
-    private BigDecimal totalAPagar;
+    private Double totalAPagar;
 
     @Column(name = "TOTAL_CONSUMOS",nullable = false)
-    private BigDecimal totalConsumos;
+    private Double totalConsumos;
 
     @Column(name = "TOTAL_IMPUESTOS",nullable = false)
-    private BigDecimal totalImpuestos;
+    private Double totalImpuestos;
 
     @Column(name = "TOTAL_DESCUENTOS",nullable = false)
-    private BigDecimal totaDesuestos;
+    private Double totaDescuestos;
+
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "fk_liquidacion_tarjeta", nullable = false)
-    private Tarjeta tarjeta_id;
+    @JoinColumn(name = "ID_TARJETA", nullable = false)
+    private Tarjeta tarjeta;
+
 }

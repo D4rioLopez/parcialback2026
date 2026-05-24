@@ -1,10 +1,7 @@
-package org.example.entity;
+package org.example.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.math.BigDecimal;
-import java.util.List;
 
 @Entity
 @Table(name = "TARJETAS")
@@ -17,14 +14,10 @@ public class Tarjeta {
     @Column(name = "NUMERO", unique = true, nullable = false, length = 16)
     private String numero;
 
-    @Column(name = "TITULAR")
+    @Column(name = "TITULAR",length = 100,nullable = false)
     private String titular;
 
-    @Column(name = "LIMITE_CREDITO", precision = 20, scale = 2)
-    private BigDecimal limiteCredito;
-
-    @OneToMany(mappedBy = "tarjeta", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Consumo> consumos;
-
+    @Column(name = "LIMITE_CREDITO",nullable = false)
+    private double limiteCredito;
 
 }
